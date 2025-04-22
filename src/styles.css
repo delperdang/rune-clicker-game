@@ -1,0 +1,51 @@
+/* src/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --osrc-bg-dark: #2d2d2d; /* Darker background area */
+    --osrc-panel-bg: #4d4031; /* Main panel brown */
+    --osrc-border-dark: #221a12; /* Dark border */
+    --osrc-border-light: #5a4a3a; /* Lighter inner border */
+    --osrc-text-yellow: #ffff00;
+    --osrc-text-orange: #ff981f;
+    --osrc-text-white: #ffffff;
+    --osrc-highlight-bg: #5a4a3a; /* Hover/Highlight background */
+}
+
+body {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    background-color: var(--osrc-bg-dark);
+    color: var(--osrc-text-white); /* Default text white */
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    image-rendering: pixelated;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.osrc-text-yellow { color: var(--osrc-text-yellow); }
+.osrc-text-orange { color: var(--osrc-text-orange); }
+.osrc-text-white { color: var(--osrc-text-white); }
+
+@media (max-width: 600px) {
+    body { font-size: 8px; } /* Smaller font on mobile */
+    .container { flex-direction: column; align-items: center; }
+    .orb-section, .skills-section { /* These might need adjustment if components don't use these classes directly on their host */
+        width: 95%; max-width: 350px; min-width: unset;
+    }
+    #orb { width: 130px; height: 130px; }
+    #xp-popup-container { width: 130px; }
+}

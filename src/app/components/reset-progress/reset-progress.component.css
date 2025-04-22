@@ -1,0 +1,61 @@
+.reset-container {
+    padding: 10px;
+    text-align: center;
+    border-top: 2px solid var(--osrc-border-light); /* Separator line */
+    min-height: 50px; /* Add min-height to prevent layout jump */
+}
+
+.osrc-button {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px; /* Matching body font size */
+    padding: 8px 12px;
+    background-color: var(--osrc-panel-bg); /* Same as panel */
+    color: var(--osrc-text-orange); /* Orange text */
+    border: 2px solid var(--osrc-border-dark);
+    box-shadow: inset 0 0 0 1px var(--osrc-border-light);
+    cursor: pointer;
+    text-shadow: 1px 1px #000;
+    transition: background-color 0.1s linear;
+    margin: 0 5px; /* Add space between buttons if multiple are visible */
+}
+
+.osrc-button:hover {
+    background-color: var(--osrc-highlight-bg); /* Highlight color on hover */
+    color: var(--osrc-text-yellow);
+}
+
+.osrc-button:active {
+    background-color: var(--osrc-border-light);
+    transform: translateY(1px); /* Press effect */
+}
+
+.confirmation-area {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: var(--osrc-border-dark); /* Slightly darker background */
+    border: 1px solid var(--osrc-border-light);
+}
+
+.confirmation-message {
+    margin-bottom: 10px;
+    font-size: 0.9em; /* Slightly smaller text */
+}
+
+.osrc-confirm-yes {
+    color: #4ade80; /* Greenish text */
+    border-color: #4ade80; /* Greenish border */
+}
+.osrc-confirm-yes:hover {
+    background-color: #22543d; /* Dark green hover */
+    color: #6ee7b7;
+}
+
+.osrc-cancel-no {
+    color: #f87171; /* Reddish text */
+    border-color: #f87171; /* Reddish border */
+}
+
+.osrc-cancel-no:hover {
+    background-color: #7f1d1d; /* Dark red hover */
+    color: #fca5a5;
+}

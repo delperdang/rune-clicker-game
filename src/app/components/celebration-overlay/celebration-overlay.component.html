@@ -1,0 +1,6 @@
+<div id="celebration-content" *ngIf="celebratedSkill">
+    <img id="celebration-icon"
+         [src]="celebratedSkill.icon"
+         [alt]="celebratedSkill.name + ' Level 99!'">
+    <p id="celebration-text">{{ celebratedSkill.name }} Reached Level 99!</p>
+</div>

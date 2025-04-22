@@ -1,0 +1,8 @@
+<div class="orb-section"> <h1 class="osrc-text-yellow">Click the Rune!</h1>
+    <div id="orb" (click)="onOrbClick()"></div>
+    <div id="xp-popup-container">
+      <div *ngFor="let popup of activePopups" class="xp-popup">
+        +{{ popup.xpAmount.toLocaleString() }} {{ popup.skillName }} XP
+      </div>
+    </div>
+</div>
