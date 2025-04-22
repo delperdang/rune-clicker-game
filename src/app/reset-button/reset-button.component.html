@@ -1,0 +1,23 @@
+<div class="reset-container">
+  @if (!showConfirmation) {
+    <button id="reset-button"
+            class="osrc-button"
+            (click)="onResetClick()">
+      Reset Progress
+    </button>
+  } @else {
+    <div id="reset-confirmation-area" class="confirmation-area">
+      <p class="confirmation-message osrc-text-white">Are you sure? This cannot be undone.</p>
+      <button id="confirm-reset-yes"
+              class="osrc-button osrc-confirm-yes"
+              (click)="onConfirmReset()">
+        ✔ Yes
+      </button>
+      <button id="confirm-reset-no"
+              class="osrc-button osrc-cancel-no"
+              (click)="onCancelReset()">
+        ❌ No
+      </button>
+    </div>
+  }
+</div>

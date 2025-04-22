@@ -1,0 +1,16 @@
+<div id="max-level-overlay" [class.visible]="showCelebration">
+  @if (celebrationSkill) {
+    <div id="celebration-content">
+      <img id="celebration-icon" [src]="celebrationSkill.icon" [alt]="celebrationSkill.name + ' Level 99!'">
+      <p id="celebration-text">{{ celebrationSkill.name }} Reached Level 99!</p>
+    </div>
+  }
+</div>
+
+<div class="container">
+  <app-orb></app-orb>
+  <div class="skills-panel-container">
+     <app-skills-table></app-skills-table>
+     <app-reset-button></app-reset-button>
+  </div>
+</div>

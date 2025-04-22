@@ -1,0 +1,12 @@
+.skills-panel-container {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  @media (max-width: 600px) {
+    .skills-panel-container {
+      width: 95%;
+      max-width: 350px;
+      min-width: unset;
+    }
+  }

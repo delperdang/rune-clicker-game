@@ -1,0 +1,14 @@
+<div class="orb-section">
+    <h1 class="osrc-text-yellow">Click the Rune!</h1>
+    <div id="orb" (click)="onOrbClick()"></div>
+    <div id="xp-popup-container">
+      @for (popup of xpPopups; track trackPopupById; let index = $index) {
+        <div class="xp-popup"
+             [@floatUpFadeOut]
+             (@floatUpFadeOut.done)="removePopup(popup.id)"
+             [style.left.%]="popup.left">
+          +{{ popup.xpGained }} {{ popup.skillName }} XP
+        </div>
+      }
+    </div>
+  </div>
