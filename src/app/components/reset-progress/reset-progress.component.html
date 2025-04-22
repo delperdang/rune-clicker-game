@@ -1,8 +1,0 @@
-<div class="reset-container">
-    <button *ngIf="!showConfirmation" id="reset-button" class="osrc-button" (click)="askConfirmation()">Reset Progress</button>
-  
-    <div *ngIf="showConfirmation" class="confirmation-area"> <p class="confirmation-message osrc-text-white">Are you sure? This cannot be undone.</p>
-        <button id="confirm-reset-yes" class="osrc-button osrc-confirm-yes" (click)="confirmReset()">✔ Yes</button>
-        <button id="confirm-reset-no" class="osrc-button osrc-cancel-no" (click)="cancelReset()">❌ No</button>
-    </div>
-</div>
