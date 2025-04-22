@@ -1,18 +1,21 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GameDataService } from '../../services/game-data.service';
+import { CommonModule } from '@angular/common'; // Import CommonModule
 
 interface XpPopupInfo {
-  id: number; // Unique ID for removal
+  id: number;
   skillName: string;
   xpAmount: number;
 }
 
 @Component({
   selector: 'app-orb',
+  standalone: true, // Ensure standalone is true
+  imports: [ CommonModule ], // Add CommonModule to imports
   templateUrl: './orb.component.html',
   styleUrls: ['./orb.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush // Optimize change detection
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrbComponent implements OnInit, OnDestroy {
   activePopups: XpPopupInfo[] = [];
@@ -22,7 +25,7 @@ export class OrbComponent implements OnInit, OnDestroy {
   constructor(
     private gameDataService: GameDataService,
     private cdRef: ChangeDetectorRef
-    ) {}
+  ) {}
 
   ngOnInit(): void {
     this.xpSub = this.gameDataService.xpGained$.subscribe(xpInfo => {
@@ -37,7 +40,7 @@ export class OrbComponent implements OnInit, OnDestroy {
   }
 
   onOrbClick(): void {
-    this.gameDataService.addXpToRandomSkill(); // Tell service to add XP
+    this.gameDataService.addXpToRandomSkill();
   }
 
   showXpPopup(skillName: string, xpAmount: number): void {
@@ -47,11 +50,11 @@ export class OrbComponent implements OnInit, OnDestroy {
       xpAmount: xpAmount
     };
     this.activePopups = [...this.activePopups, newPopup];
-    this.cdRef.markForCheck(); // Notify Angular about the change
+    this.cdRef.markForCheck();
 
     setTimeout(() => {
       this.activePopups = this.activePopups.filter(p => p.id !== newPopup.id);
-      this.cdRef.markForCheck(); // Notify Angular about the removal
-    }, 1450); // Match animation duration (approx 1.5s)
+      this.cdRef.markForCheck();
+    }, 1450);
   }
 }

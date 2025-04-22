@@ -82,7 +82,9 @@ export class GameDataService {
   }
 
   private triggerSave(skills: Skill[]): void {
-    clearTimeout(this.saveTimeout);
+    if (this.saveTimeout !== null) {
+      clearTimeout(this.saveTimeout);
+    }
     this.saveTimeout = setTimeout(() => {
       this.saveSkills(skills);
     }, SAVE_DEBOUNCE_MS);
@@ -141,7 +143,9 @@ export class GameDataService {
     this._skills.next(newSkills);
     this.updateTotals(newSkills);
     this.saveSkills(newSkills); // Save immediately on reset
-    clearTimeout(this.saveTimeout); // Clear any pending debounced save
+    if (this.saveTimeout !== null) {
+      clearTimeout(this.saveTimeout);
+    }
   }
 
   addXpToRandomSkill(): void {

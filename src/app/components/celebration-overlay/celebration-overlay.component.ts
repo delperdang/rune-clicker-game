@@ -2,46 +2,52 @@ import { Component, OnInit, OnDestroy, HostBinding, ChangeDetectionStrategy, Cha
 import { Subscription } from 'rxjs';
 import { GameDataService } from '../../services/game-data.service';
 import { Skill } from '../../services/skill.model';
+import { CommonModule } from '@angular/common'; // Import CommonModule
 
 @Component({
   selector: 'app-celebration-overlay',
+  standalone: true, // Ensure standalone is true
+  imports: [ CommonModule ], // Add CommonModule to imports
   templateUrl: './celebration-overlay.component.html',
   styleUrls: ['./celebration-overlay.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush // Optimize change detection
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CelebrationOverlayComponent implements OnInit, OnDestroy {
   @HostBinding('class.visible') showOverlay = false;
-
   celebratedSkill: Skill | null = null;
-
   private celebrationSub: Subscription | null = null;
   private overlayTimeout: ReturnType<typeof setTimeout> | null = null;
 
   constructor(
     private gameDataService: GameDataService,
-    private cdRef: ChangeDetectorRef // Inject ChangeDetectorRef
-    ) {}
+    private cdRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.celebrationSub = this.gameDataService.skillReachedMaxLevel$.subscribe(skill => {
       if (skill) {
-        this.celebratedSkill = skill; // Store the skill data
-        this.showOverlay = true; // Set flag to show overlay (triggers host binding)
-        this.cdRef.markForCheck(); // Notify Angular
+        this.celebratedSkill = skill;
+        this.showOverlay = true;
+        this.cdRef.markForCheck();
 
-        clearTimeout(this.overlayTimeout);
+        // Fix: Check if timeout exists before clearing
+        if (this.overlayTimeout !== null) {
+          clearTimeout(this.overlayTimeout);
+        }
 
         this.overlayTimeout = setTimeout(() => {
           this.showOverlay = false;
-          this.celebratedSkill = null; // Clear the celebrated skill
-          this.cdRef.markForCheck(); // Notify Angular
-        }, 3000); // MAX_LEVEL_CELEBRATION_DURATION_MS
+          this.celebratedSkill = null;
+          this.cdRef.markForCheck();
+        }, 3000);
       }
     });
   }
 
   ngOnDestroy(): void {
     this.celebrationSub?.unsubscribe();
-    clearTimeout(this.overlayTimeout);
+    if (this.overlayTimeout !== null) {
+      clearTimeout(this.overlayTimeout);
+    }
   }
 }

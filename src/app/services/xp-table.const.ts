@@ -11,5 +11,5 @@ export const XP_FOR_LEVEL: number[] = [
     11805606, 13034431
   ];
   
-  export const MAX_LEVEL = 99;
-  export const MAX_XP = 200000000;
+export const MAX_LEVEL = 99;
+export const MAX_XP = 200000000;
