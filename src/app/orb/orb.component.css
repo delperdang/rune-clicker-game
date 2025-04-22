@@ -36,7 +36,7 @@
 }
 
 #xp-popup-container {
-    position: relative; /* Crucial for absolute positioning of popups */
+    position: relative; /* For absolute positioning of popups */
     width: 180px; /* Match orb */
     height: 40px; /* Space for popups to appear */
     margin-top: 5px;

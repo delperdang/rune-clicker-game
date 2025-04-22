@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private levelUpSubscription: Subscription | null = null;
   private celebrationTimeout: any = null;
-  private readonly MAX_LEVEL_CELEBRATION_DURATION_MS = 3000; // From JavaScript.html
+  private readonly MAX_LEVEL_CELEBRATION_DURATION_MS = 3000;
 
 
   constructor(private skillService: SkillService) {}
@@ -48,7 +48,6 @@ export class AppComponent implements OnInit, OnDestroy {
        this.celebrationSkill = skill;
        this.showCelebration = true;
 
-       // Clear any existing timeout before setting a new one
        clearTimeout(this.celebrationTimeout);
 
        this.celebrationTimeout = setTimeout(() => {

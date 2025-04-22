@@ -42,7 +42,7 @@ export class SkillService {
     1986068, 2192818, 2421087, 2673114, 2951373, 3258594, 3597792, 3972294, 4385776,
     4842295, 5346332, 5902831, 6517253, 7195629, 7944614, 8771558, 9684577, 10692629,
     11805606, 13034431
-  ]; // From Code.js
+  ];
 
   private readonly defaultSkillData: Skill[] = [
     { name: 'Attack', icon: 'https://runescape.wiki/images/thumb/Attack-icon.png/21px-Attack-icon.png', xp: 0, level: 1 },
@@ -63,13 +63,12 @@ export class SkillService {
     { name: 'Herblore', icon: 'https://runescape.wiki/images/thumb/Herblore-icon.png/21px-Herblore-icon.png', xp: 0, level: 1 },
     { name: 'Agility', icon: 'https://runescape.wiki/images/thumb/Agility-icon.png/21px-Agility-icon.png', xp: 0, level: 1 },
     { name: 'Thieving', icon: 'https://runescape.wiki/images/thumb/Thieving-icon.png/21px-Thieving-icon.png', xp: 0, level: 1 }
-  ]; // From Code.js
+  ];
 
   private skills: Skill[] = [];
   private skillsSubject = new BehaviorSubject<Skill[]>([]);
   skills$ = this.skillsSubject.asObservable();
 
-  // Subjects to notify components of events
   private xpGainSubject = new Subject<XpGainInfo>();
   xpGain$ = this.xpGainSubject.asObservable();
 
@@ -88,7 +87,6 @@ export class SkillService {
       const savedData = localStorage.getItem(this.SKILL_DATA_KEY);
       if (savedData) {
         const parsedData = JSON.parse(savedData) as Skill[];
-        // Basic validation
         if (Array.isArray(parsedData) && parsedData.length === this.defaultSkillData.length && parsedData[0]?.name) {
           this.skills = parsedData;
           console.log('Loaded saved skill data.');

@@ -1,59 +1,57 @@
-# RuneClickerGame
+# Rune Clicker Game
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+This project is a simple clicker game built with Angular, inspired by classic Old School RPG skills.
 
-## Development server
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
 
-To start a local development server, run:
+## Prerequisites
 
-```bash
-ng serve
-```
+* Node.js (Check Angular documentation for compatible versions)
+* Angular CLI (`npm install -g @angular/cli`)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Installation
 
-## Code scaffolding
+1.  Clone the repository:
+    ```bash
+    git clone [https://github.com/](https://github.com/)<your-username>/rune-clicker-game.git
+    ```
+2.  Navigate into the project directory:
+    ```bash
+    cd rune-clicker-game
+    ```
+3.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Deployment to GitHub Pages
 
-```bash
-ng generate component component-name
-```
+This project can be deployed to GitHub Pages using the `angular-cli-ghpages` package.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1.  **Install angular-cli-ghpages (if you haven't already):**
+    ```bash
+    npm install -D angular-cli-ghpages
+    ```
 
-```bash
-ng generate --help
-```
+2.  **Build for GitHub Pages:**
+    Replace `<your-repo-name>` with your actual GitHub repository name (e.g., `rune-clicker-game`).
+    ```bash
+    ng build --configuration production --base-href /<your-repo-name>/
+    ```
+    *Example:*
+    ```bash
+    ng build --configuration production --base-href /rune-clicker-game/
+    ```
 
-## Building
+3.  **Deploy the build:**
+    This command pushes the contents of the browser build output directory (`dist/rune-clicker-game/browser`) to the `gh-pages` branch of your repository.
+    ```bash
+    npx angular-cli-ghpages --dir=dist/rune-clicker-game/browser
+    ```
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+4.  **Configure GitHub Repository Settings:**
+    * Go to your repository settings on GitHub.
+    * Navigate to the "Pages" section.
+    * Under "Build and deployment", ensure the source is "Deploy from a branch".
+    * Select the `gh-pages` branch and the `/ (root)` folder.
+    * Save the changes. Your site should be live after a minute or two.

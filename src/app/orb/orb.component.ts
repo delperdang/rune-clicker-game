@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SkillService, XpGainInfo } from '../skill.service';
-import { trigger, state, style, animate, transition } from '@angular/animations'; // Keep this import
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Subscription } from 'rxjs';
 
 interface XpPopup extends XpGainInfo {

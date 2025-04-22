@@ -1,4 +1,3 @@
-/* src/app/reset-button/reset-button.component.css */
 .reset-container {
     padding: 10px;
     text-align: center;
@@ -32,12 +31,11 @@
 }
 
 .confirmation-area {
-    /* display handled by *ngIf */
     margin-top: 8px;
     padding: 8px;
     background-color: var(--osrc-border-dark); /* Slightly darker background */
     border: 1px solid var(--osrc-border-light);
-    border-radius: 0; /* Keep sharp edges */
+    border-radius: 0; /* Sharp edges */
 }
 
 .confirmation-message {
