@@ -48,7 +48,7 @@ export class GameDataService {
     { name: 'Thieving', icon: 'https://runescape.wiki/images/thumb/Thieving-icon.png/21px-Thieving-icon.png', xp: 0, level: 1 }
   ];
 
-  private saveTimeout: any = null; // For debouncing save calls
+  private saveTimeout: ReturnType<typeof setTimeout> | null = null; // For debouncing save calls
 
   constructor() {
     this.loadSkills(); // Load data when service is initialized
@@ -56,7 +56,6 @@ export class GameDataService {
 
   private calculateLevel(xp: number): number {
     if (xp >= XP_FOR_LEVEL[MAX_LEVEL - 1]) return MAX_LEVEL;
-    // Iterate backwards for efficiency
     for (let i = MAX_LEVEL - 2; i >= 0; i--) {
       if (xp >= XP_FOR_LEVEL[i]) {
         return i + 1; // Level is index + 1
@@ -180,11 +179,9 @@ export class GameDataService {
     }
 
     const newLevel = this.calculateLevel(targetSkill.xp);
-    let leveledUp = false;
 
     if (newLevel > oldLevel) {
         targetSkill.level = newLevel;
-        leveledUp = true;
         console.log(`${targetSkill.name} leveled up to ${newLevel}!`);
         this._skillLeveledUp.next({ skillIndex: randomIndex, newLevel: newLevel });
 

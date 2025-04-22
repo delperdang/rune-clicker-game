@@ -15,7 +15,7 @@ export class CelebrationOverlayComponent implements OnInit, OnDestroy {
   celebratedSkill: Skill | null = null;
 
   private celebrationSub: Subscription | null = null;
-  private overlayTimeout: any = null;
+  private overlayTimeout: ReturnType<typeof setTimeout> | null = null;
 
   constructor(
     private gameDataService: GameDataService,
