@@ -1,93 +1,91 @@
 .skills-section {
     flex: 1;
     min-width: 300px;
-    padding: 0; /* No padding, using border */
-    border: 3px solid var(--osrc-border-dark); /* Outer border */
-    background-color: var(--osrc-panel-bg); /* Panel background */
-    box-shadow: inset 0 0 0 2px var(--osrc-border-light); /* Inner border */
-    border-radius: 0; /* Sharp corners */
-    display: flex; /* Use flex to manage children */
-    flex-direction: column; /* Stack header, table, footer */
+    padding: 0;
+    border: 3px solid var(--osrc-border-dark);
+    background-color: var(--osrc-panel-bg);
+    box-shadow: inset 0 0 0 2px var(--osrc-border-light);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .skills-section h2 {
     margin: 0;
-    padding: 8px 10px; /* Padding inside header */
-    background-color: var(--osrc-border-dark); /* Header background */
+    padding: 8px 10px;
+    background-color: var(--osrc-border-dark);
     text-align: center;
-    border-bottom: 3px solid var(--osrc-border-dark); /* Match outer border */
-    box-shadow: inset 0 0 0 2px var(--osrc-border-light); /* Inner border */
+    border-bottom: 3px solid var(--osrc-border-dark);
+    box-shadow: inset 0 0 0 2px var(--osrc-border-light);
     text-shadow: 1px 1px #000;
-    color: var(--osrc-text-orange); /* Ensure color */
+    color: var(--osrc-text-orange);
 }
 
 #skills-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 0; /* No margin */
-    table-layout: fixed; /* Helps with column sizing */
+    margin-top: 0;
+    table-layout: fixed;
 }
 
 #skills-table th,
 #skills-table td {
     padding: 6px 8px;
     text-align: left;
-    color: var(--osrc-text-yellow); /* Default skill text */
-    vertical-align: middle; /* Align icons and text better */
+    color: var(--osrc-text-yellow);
+    vertical-align: middle;
 }
 
 #skills-table th {
     padding: 8px 8px;
-    color: var(--osrc-text-orange); /* Header text color */
+    color: var(--osrc-text-orange);
 }
 
-#skills-table th:nth-child(1), /* Icon column */
+#skills-table th:nth-child(1),
 #skills-table td:nth-child(1) {
-    width: 35px; /* Fixed width for icon column */
+    width: 35px;
     text-align: center;
     padding-right: 0;
 }
-#skills-table th:nth-child(2), /* Skill name column */
+#skills-table th:nth-child(2),
 #skills-table td:nth-child(2) {
-    width: auto; /* Let skill name take remaining space */
+    width: auto;
 }
-#skills-table th:nth-child(3), /* Level column */
+#skills-table th:nth-child(3),
 #skills-table td:nth-child(3) {
-    width: 45px; /* Fixed width for level column */
+    width: 45px;
     text-align: right;
 }
 
 
 #skills-table img {
-    vertical-align: middle; /* Align icon nicely */
+    vertical-align: middle;
     width: 21px;
     height: 21px;
-    margin-right: 0px; /* Adjusted in column padding */
-    image-rendering: pixelated; /* Keep pixel art sharp */
-    display: inline-block; /* Helps alignment */
+    margin-right: 0px;
+    image-rendering: pixelated;
+    display: inline-block;
 }
 
 .skill-level {
-    font-weight: normal; /* Pixel font is boldish */
-    /* text-align: right; handled in td */
-    min-width: 25px; /* Ensure space for level number */
+    font-weight: normal;
+    min-width: 25px;
     display: inline-block;
-    /* Removed position relative/top */
 }
 
 .skill-name {
-    padding-left: 0; /* Remove padding */
+    padding-left: 0;
 }
 
 #skills-table tbody tr {
     transition: background-color 0.1s linear, outline 0.3s ease, box-shadow 0.3s ease;
-    outline: 0px solid transparent; /* Start with transparent outline */
-    position: relative; /* Needed for z-index */
+    outline: 0px solid transparent;
+    position: relative;
     border-bottom: 2px solid var(--osrc-border-light);
 }
 
 #skills-table tbody tr:last-child {
-    border-bottom: none; /* No bottom border on the very last row */
+    border-bottom: none;
 }
 
 #skills-table tbody tr.level-99-outline,
@@ -98,17 +96,17 @@
 .level-99-outline {
     outline: 2px solid gold !important;
     box-shadow: 0 0 6px gold !important;
-    z-index: 1; /* Above hover */
+    z-index: 1;
 }
 
 .max-xp-outline {
     outline: 2px solid cyan !important;
     box-shadow: 0 0 8px cyan !important;
-    z-index: 2; /* Above level 99 and hover */
+    z-index: 2;
 }
 
 #skills-table tbody tr:hover {
-    background-color: var(--osrc-highlight-bg); /* Hover effect */
+    background-color: var(--osrc-highlight-bg);
 }
 
 tr.highlight {
@@ -122,7 +120,7 @@ tr.level-up-flash {
 
 @keyframes levelUpFlash {
     0% { background-color: var(--osrc-panel-bg); }
-    50% { background-color: #a3e635; } /* Bright flash */
+    50% { background-color: #a3e635; }
     100% { background-color: var(--osrc-panel-bg); }
 }
 
@@ -130,32 +128,31 @@ tr.level-up-flash.level-99-outline { background-color: #bef264 !important; }
 tr.level-up-flash.max-xp-outline { background-color: #67e8f9 !important; }
 
 #skills-tfoot tr {
-    background-color: var(--osrc-border-dark); /* Darker background */
+    background-color: var(--osrc-border-dark);
     font-weight: normal;
-    border-top: 3px solid var(--osrc-border-dark); /* Thicker top border */
+    border-top: 3px solid var(--osrc-border-dark);
 }
 
 #skills-tfoot th, #skills-tfoot td {
-    border-bottom: none; /* No bottom border in footer */
+    border-bottom: none;
     padding: 8px 8px;
     text-align: right;
 }
 
 #total-level-label {
     text-align: left;
-    padding-left: 10px; /* Align roughly under Icon/Skill */
-     color: var(--osrc-text-orange); /* Ensure color */
+    padding-left: 10px;
+     color: var(--osrc-text-orange);
 }
 
 #total-level-value {
     min-width: 40px;
     display: inline-block;
     text-align: right;
-    color: var(--osrc-text-yellow); /* Ensure color */
+    color: var(--osrc-text-yellow);
 }
-
 
 @media (max-width: 600px) {
     #skills-table th, #skills-table td { padding: 4px 6px; }
-    .skills-section { width: 100%; /* Take full width within container */ }
+    .skills-section { width: 100%; }
 }

@@ -1,29 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --osrc-bg-dark: #2d2d2d; /* Darker background area */
-    --osrc-panel-bg: #4d4031; /* Main panel brown */
-    --osrc-border-dark: #221a12; /* Dark border */
-    --osrc-border-light: #5a4a3a; /* Lighter inner border */
+    --osrc-bg-dark: #2d2d2d;
+    --osrc-panel-bg: #4d4031;
+    --osrc-border-dark: #221a12;
+    --osrc-border-light: #5a4a3a;
     --osrc-text-yellow: #ffff00;
     --osrc-text-orange: #ff981f;
     --osrc-text-white: #ffffff;
-    --osrc-highlight-bg: #5a4a3a; /* Hover/Highlight background */
+    --osrc-highlight-bg: #5a4a3a;
 }
 
 body {
     font-family: 'Press Start 2P', monospace;
     font-size: 10px;
     background-color: var(--osrc-bg-dark);
-    color: var(--osrc-text-white); /* Default text white */
+    color: var(--osrc-text-white);
     margin: 0;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    image-rendering: pixelated; /* Better for pixel art */
-    -webkit-font-smoothing: none; /* Ensure pixel font crispness */
+    image-rendering: pixelated;
+    -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
 }
@@ -42,7 +42,7 @@ body {
 .osrc-text-white { color: var(--osrc-text-white); }
 
 @media (max-width: 600px) {
-    body { font-size: 8px; } /* Smaller font on mobile */
+    body { font-size: 8px; }
     .container { flex-direction: column; align-items: center; }
 }
 
@@ -52,19 +52,19 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-    display: flex; /* Use flex for centering */
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100; /* Above everything else */
+    z-index: 100;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    pointer-events: none; /* Allow clicks through when invisible */
+    pointer-events: none;
 }
 
 #max-level-overlay.visible {
     opacity: 1;
-    pointer-events: auto; /* Block clicks when visible */
+    pointer-events: auto;
 }
 
 #celebration-content {
@@ -73,9 +73,9 @@ body {
     padding: 30px 40px;
     border: 4px solid gold;
     box-shadow: 0 0 20px 5px gold;
-    border-radius: 10px; /* Slightly rounded for celebration */
+    border-radius: 10px;
     animation: celebrationPop 0.5s ease-out forwards;
-    transform: scale(0.5); /* Start small for pop effect */
+    transform: scale(0.5);
 }
 
 @keyframes celebrationPop {
@@ -84,7 +84,7 @@ body {
 }
 
 #celebration-icon {
-    width: 64px; /* Larger icon */
+    width: 64px;
     height: 64px;
     margin-bottom: 15px;
     image-rendering: pixelated;
@@ -92,7 +92,7 @@ body {
 }
 
 #celebration-text {
-    font-size: 1.8em; /* Larger text */
+    font-size: 1.8em;
     color: gold;
     text-shadow: 2px 2px #000;
     margin: 0;

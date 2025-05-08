@@ -42,7 +42,7 @@ export class OrbComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-     this.xpGainSubscription?.unsubscribe();
+    this.xpGainSubscription?.unsubscribe();
   }
 
   onOrbClick(): void {
@@ -66,11 +66,11 @@ export class OrbComponent implements OnInit, OnDestroy {
   removePopup(id: number): void {
     const index = this.xpPopups.findIndex(p => p.id === id);
     if (index !== -1) {
-        this.xpPopups.splice(index, 1);
+      this.xpPopups.splice(index, 1);
     }
   }
 
   trackPopupById(index: number, popup: XpPopup): number {
-      return popup.id;
+    return popup.id;
   }
 }

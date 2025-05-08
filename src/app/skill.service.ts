@@ -9,15 +9,15 @@ export interface Skill {
 }
 
 export interface XpGainInfo {
-    skillName: string;
-    xpGained: number;
+  skillName: string;
+  xpGained: number;
 }
 
 export interface LevelUpInfo {
-    skillIndex: number;
-    newLevel: number;
-    isMaxLevel: boolean; // If level 99 was reached
-    isMaxXp: boolean;   // If 200M XP was reached
+  skillIndex: number;
+  newLevel: number;
+  isMaxLevel: boolean;
+  isMaxXp: boolean;
 }
 
 @Injectable({
@@ -75,7 +75,7 @@ export class SkillService {
   private levelUpSubject = new Subject<LevelUpInfo>();
   levelUp$ = this.levelUpSubject.asObservable();
 
-  private skillHighlightSubject = new Subject<number>(); // Emits skill index
+  private skillHighlightSubject = new Subject<number>();
   skillHighlight$ = this.skillHighlightSubject.asObservable();
 
   constructor() {
@@ -100,15 +100,15 @@ export class SkillService {
     } catch (error) {
       console.error('Error loading or parsing skill data:', error);
       this.resetSkillsToDefault();
-      this.saveSkills(); // Save defaults if loading failed
+      this.saveSkills();
     }
-    this.skillsSubject.next([...this.skills]); // Emit initial data
+    this.skillsSubject.next([...this.skills]);
   }
 
   private saveSkills(): void {
     try {
       localStorage.setItem(this.SKILL_DATA_KEY, JSON.stringify(this.skills));
-       console.log('Skills saved to localStorage.');
+      console.log('Skills saved to localStorage.');
     } catch (error) {
       console.error('Error saving skill data:', error);
     }
@@ -134,7 +134,7 @@ export class SkillService {
     if (targetSkill.xp >= this.MAX_XP) {
       console.log(`${targetSkill.name} is maxed. Skipping XP gain.`);
       this.xpGainSubject.next({ skillName: targetSkill.name, xpGained: 0 });
-      this.skillHighlightSubject.next(randomSkillIndex); // Highlight even if maxed
+      this.skillHighlightSubject.next(randomSkillIndex);
       return;
     }
 
@@ -142,7 +142,7 @@ export class SkillService {
     const currentLevel = targetSkill.level;
     const calculationLevelIndex = (currentLevel === this.MAX_LEVEL) ? (this.MAX_LEVEL - 1) : currentLevel;
     const xpAtCalculationLevel = (calculationLevelIndex > 0) ? this.xpForLevel[calculationLevelIndex - 1] : 0;
-    const xpForNextLevel = this.xpForLevel[calculationLevelIndex]; // Index is level-1
+    const xpForNextLevel = this.xpForLevel[calculationLevelIndex];
     const xpDifferenceForLevel = xpForNextLevel - xpAtCalculationLevel;
     const targetAverageXpGain = xpDifferenceForLevel / this.TARGET_CLICKS_PER_LEVEL;
     const minGain = Math.max(1, Math.floor(targetAverageXpGain * this.XP_GAIN_RANDOMNESS_FACTOR_MIN));
@@ -152,9 +152,9 @@ export class SkillService {
     targetSkill.xp += xpGained;
     let capped = false;
     if (targetSkill.xp > this.MAX_XP) {
-        xpGained -= (targetSkill.xp - this.MAX_XP); // Adjust displayed gain if capped
-        targetSkill.xp = this.MAX_XP;
-        capped = true;
+      xpGained -= (targetSkill.xp - this.MAX_XP);
+      targetSkill.xp = this.MAX_XP;
+      capped = true;
     }
 
     const newLevel = this.calculateLevel(targetSkill.xp);
@@ -162,46 +162,46 @@ export class SkillService {
     let isMaxLevel = false;
 
     if (newLevel > oldLevel) {
-        targetSkill.level = newLevel;
-        leveledUp = true;
-        isMaxLevel = newLevel === this.MAX_LEVEL;
-        console.log(`${targetSkill.name} leveled up to ${newLevel}!`);
+      targetSkill.level = newLevel;
+      leveledUp = true;
+      isMaxLevel = newLevel === this.MAX_LEVEL;
+      console.log(`${targetSkill.name} leveled up to ${newLevel}!`);
     }
 
     this.xpGainSubject.next({ skillName: targetSkill.name, xpGained: xpGained });
     this.skillHighlightSubject.next(randomSkillIndex);
 
     if (leveledUp || capped) {
-        this.levelUpSubject.next({
-            skillIndex: randomSkillIndex,
-            newLevel: newLevel,
-            isMaxLevel: isMaxLevel,
-            isMaxXp: capped // Notify if max XP was reached
-        });
+      this.levelUpSubject.next({
+        skillIndex: randomSkillIndex,
+        newLevel: newLevel,
+        isMaxLevel: isMaxLevel,
+        isMaxXp: capped
+      });
     }
 
     this.skills[randomSkillIndex] = { ...targetSkill };
-    this.skillsSubject.next([...this.skills]); // Emit updated array
+    this.skillsSubject.next([...this.skills]);
 
-    this.saveSkills(); // Save after every gain
+    this.saveSkills();
   }
 
   resetSkills(): void {
-      this.resetSkillsToDefault();
-      this.skillsSubject.next([...this.skills]); // Emit reset data
-      this.saveSkills();
-      console.log("Skills reset to default.");
+    this.resetSkillsToDefault();
+    this.skillsSubject.next([...this.skills]);
+    this.saveSkills();
+    console.log("Skills reset to default.");
   }
 
   private resetSkillsToDefault(): void {
-     this.skills = JSON.parse(JSON.stringify(this.defaultSkillData));
+    this.skills = JSON.parse(JSON.stringify(this.defaultSkillData));
   }
 
   getSkills(): Skill[] {
-    return [...this.skills]; // Return a copy
+    return [...this.skills];
   }
 
   getSkill(index: number): Skill | undefined {
-      return this.skills[index] ? { ...this.skills[index] } : undefined;
+    return this.skills[index] ? { ...this.skills[index] } : undefined;
   }
 }

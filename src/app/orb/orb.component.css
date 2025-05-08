@@ -10,8 +10,8 @@
 
 .orb-section h1 {
     margin-bottom: 15px;
-    text-shadow: 1px 1px var(--osrc-border-dark); /* Simple text shadow */
-    color: var(--osrc-text-yellow); /* Ensure color is set */
+    text-shadow: 1px 1px var(--osrc-border-dark);
+    color: var(--osrc-text-yellow);
 }
 
 #orb {
@@ -20,8 +20,8 @@
     border-radius: 50%;
     cursor: pointer;
     border: 3px solid var(--osrc-border-dark);
-    box-shadow: 0 0 0 2px var(--osrc-border-light), /* Inner lighter border */
-                inset 0 0 15px rgba(0, 0, 0, 0.5); /* Inner shadow */
+    box-shadow: 0 0 0 2px var(--osrc-border-light),
+                inset 0 0 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.1s ease;
     margin-top: 10px;
     position: relative;
@@ -32,32 +32,32 @@
 
 #orb:active {
     transform: scale(0.94);
-    animation-play-state: paused; /* Pause animation on click */
+    animation-play-state: paused;
 }
 
 #xp-popup-container {
-    position: relative; /* For absolute positioning of popups */
-    width: 180px; /* Match orb */
-    height: 40px; /* Space for popups to appear */
+    position: relative;
+    width: 180px;
+    height: 40px;
     margin-top: 5px;
-    pointer-events: none; /* Allow clicks to pass through */
+    pointer-events: none;
 }
 
 .xp-popup {
     position: absolute;
-    bottom: 0; /* Start at the bottom of the container */
-    left: 50%; /* Centered horizontally */
-    transform: translateX(-50%); /* Adjust for centering */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     color: var(--osrc-text-yellow);
     text-shadow: 1px 1px #000, -1px 1px #000, 1px -1px #000, -1px -1px #000;
-    background-color: transparent; /* No background */
+    background-color: transparent;
     padding: 2px;
-    font-size: 0.8em; /* Slightly smaller than base font */
+    font-size: 0.8em;
     font-weight: normal;
     white-space: nowrap;
     z-index: 10;
-    pointer-events: none; /* Individual popups don't block */
-    will-change: transform, opacity; /* Hint for animation performance */
+    pointer-events: none;
+    will-change: transform, opacity;
 }
 
 @keyframes pulse {
@@ -65,13 +65,13 @@
     transform: scale(1);
     box-shadow: 0 0 0 2px var(--osrc-border-light),
                 inset 0 0 15px rgba(0, 0, 0, 0.5),
-                0 0 5px rgba(255, 255, 255, 0.2); /* Subtle outer glow */
+                0 0 5px rgba(255, 255, 255, 0.2);
     }
     50% {
-    transform: scale(1.05); /* Pulse bigger */
+    transform: scale(1.05);
     box-shadow: 0 0 0 2px var(--osrc-border-light),
                 inset 0 0 20px rgba(0, 0, 0, 0.6),
-                0 0 15px rgba(255, 255, 255, 0.4); /* Brighter glow */
+                0 0 15px rgba(255, 255, 255, 0.4);
     }
     100% {
     transform: scale(1);
@@ -82,11 +82,11 @@
 }
 
 @keyframes colorShift {
-    0% { background-color: #4fc3f7; } /* Light Blue */
-    25% { background-color: #ffb74d; } /* Orange */
-    50% { background-color: #81c784; } /* Green */
-    75% { background-color: #ba68c8; } /* Purple */
-    100% { background-color: #4fc3f7; } /* Back to Light Blue */
+    0% { background-color: #4fc3f7; }
+    25% { background-color: #ffb74d; }
+    50% { background-color: #81c784; }
+    75% { background-color: #ba68c8; }
+    100% { background-color: #4fc3f7; }
 }
 
 @media (max-width: 600px) {
